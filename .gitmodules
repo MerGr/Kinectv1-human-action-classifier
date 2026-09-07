@@ -1,0 +1,6 @@
+[submodule "openni-python3"]
+	path = openni-python3
+	url = https://github.com/MerGr/openni-python3.git
+[submodule "libfreenect"]
+	path = libfreenect
+	url = https://github.com/OpenKinect/libfreenect.git
