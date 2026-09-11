@@ -1,9 +1,9 @@
-import os
+#import os
 
-os.environ["NITE2_REDIST"] = r"C:\Program Files\PrimeSense\NiTE2\Redist"
-os.add_dll_directory(os.environ["NITE2_REDIST"])
-os.add_dll_directory(r"C:\libfreenect\lib\OpenNI2-FreenectDriver")
-os.add_dll_directory(r"C:\libfreenect\lib")
+#os.environ["NITE2_REDIST"] = r"C:\Program Files\PrimeSense\NiTE2\Redist"
+#os.add_dll_directory(os.environ["NITE2_REDIST"])
+#os.add_dll_directory(r"C:\libfreenect\lib\OpenNI2-FreenectDriver")
+#os.add_dll_directory(r"C:\libfreenect\lib")
 
 import numpy as np
 import cv2
@@ -15,7 +15,7 @@ import warnings
 import sys
 
 # Add parent directory to path to import inference_engine
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+#sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from inference_engine import (
     model, scaler, WINDOW_SIZE, CONFIDENCE_THRESHOLD,

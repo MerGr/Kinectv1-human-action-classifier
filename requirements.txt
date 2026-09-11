@@ -5,3 +5,5 @@ matplotlib>=3.10.0
 scikit-learn>=1.8.0
 joblib>=1.5.3
 scikit-learn-intelex>=2026.0.0
+freenect>=0.1.0
+openni-python3>=2.4.0

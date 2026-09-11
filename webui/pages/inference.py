@@ -3,12 +3,12 @@ import cv2
 import numpy as np
 import threading
 import time
-import os
+#import os
 import sys
 from collections import deque
 
 # Add parent directory to path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+#sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from inference_engine import (
     model, scaler, WINDOW_SIZE, CONFIDENCE_THRESHOLD,
@@ -34,10 +34,10 @@ class KinectInferenceThread(threading.Thread):
             from openni import openni2, nite2
 
             # Set up DLL paths
-            os.environ["NITE2_REDIST"] = r"C:\Program Files\PrimeSense\NiTE2\Redist"
-            os.add_dll_directory(os.environ["NITE2_REDIST"])
-            os.add_dll_directory(r"C:\libfreenect\lib\OpenNI2-FreenectDriver")
-            os.add_dll_directory(r"C:\libfreenect\lib")
+#            os.environ["NITE2_REDIST"] = r"C:\Program Files\PrimeSense\NiTE2\Redist"
+#            os.add_dll_directory(os.environ["NITE2_REDIST"])
+#            os.add_dll_directory(r"C:\libfreenect\lib\OpenNI2-FreenectDriver")
+#            os.add_dll_directory(r"C:\libfreenect\lib")
 
             openni2.initialize()
             nite2.initialize()
@@ -242,24 +242,25 @@ def get_confidences():
     _, _, _, conf_dict = inference_state.get_state()
 
     default_confidences = {
-        "Agiter bras horizontalement": 0.0,
-        "Agiter bras en haut": 0.0,
-        "Agiter les deux mains": 0.0,
-        "Se pencher": 0.0,
-        "Applaudir": 0.0,
-        "Marcher": 0.0,
-        "Appeler": 0.0,
-        "Boire": 0.0,
-        "S'asseoir": 0.0,
-        "Se lever": 0.0,
-        "Inconnu / Aucune activité": 1.0,
+        "Wave Horizontal": 0.0,
+        "Wave Up": 0.0,
+        "Wave Both Hands": 0.0,
+        "Bend": 0.0,
+        "Clap": 0.0,
+        "Walk": 0.0,
+        "Call": 0.0,
+        "Drink": 0.0,
+        "Sit": 0.0,
+        "Standing up": 0.0,
+        "Stand": 0.0,
+        "Unknown": 1.0,
     }
 
     if conf_dict:
         default_confidences.update(conf_dict)
-        # Set "Inconnu" to 0 if we have predictions
-        if any(v > 0 for k, v in conf_dict.items() if k != "Inconnu / Aucune activité"):
-            default_confidences["Inconnu / Aucune activité"] = 0.0
+        # Set "Unknown" to 0 if we have predictions
+        if any(v > 0 for k, v in conf_dict.items() if k != "Unknown"):
+            default_confidences["Unknown"] = 0.0
 
     return default_confidences
 
@@ -273,8 +274,8 @@ def render():
     <div class="brand-bar">
         <div class="brand-dot"></div>
         <div>
-            <div class="brand-tag">Inférence en Direct</div>
-            <div class="brand-sub">Reconnaissance d'activités en temps réel</div>
+            <div class="brand-tag">Live inference</div>
+            <div class="brand-sub">Realtime action recognition</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -288,7 +289,7 @@ def render():
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
         <span style="color:{status_color};font-size:14px;font-weight:bold">{status_text}</span>
         <span style="color:#666;font-size:12px">
-            {'Inférence Kinect active' if running else 'Kinect non connecté ou échec de l\'initialisation'}
+            {'Kinect active' if running else 'Error'}
         </span>
     </div>
     """, unsafe_allow_html=True)
@@ -297,14 +298,14 @@ def render():
 
     # ── Left : video feed ─────────────────────────────────────
     with col_feed:
-        st.markdown('<div class="sec-title">Flux Vidéo</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sec-title">RGB camera feed</div>', unsafe_allow_html=True)
 
         # Skeleton toggle at the top of the feed
         if 'show_skeleton' not in st.session_state:
             st.session_state.show_skeleton = True
 
         show_skeleton = st.toggle(
-            "Afficher le squelette",
+            "Show skeleton",
             value=st.session_state.show_skeleton,
             key="skeleton_toggle"
         )
@@ -317,7 +318,7 @@ def render():
 
         # ── Right : confidence panel ──────────────────────────────
     with col_conf:
-        st.markdown('<div class="sec-title">Activité Prédite</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sec-title">Predicted label</div>', unsafe_allow_html=True)
 
         pred_placeholder = st.empty()
         conf_placeholder = st.empty()
@@ -336,7 +337,7 @@ def render():
             feed_placeholder.image(frame_rgb, width="stretch", channels="RGB")
         else:
             # Only show placeholder if Kinect is not connected at all
-            status_msg = "Initialisation du Kinect..." if running else "Kinect non connecté"
+            status_msg = "initializing Kinect..." if running else "Kinect not connected!"
             feed_placeholder.markdown(f"""
             <div class="live-frame">
                 <div class="live-badge">
@@ -347,7 +348,7 @@ def render():
                     <div style="font-family:'IBM Plex Mono',monospace;
                                 font-size:12px;color:#2a2a2a;
                                 letter-spacing:0.08em">
-                        {'Vérifiez la connexion Kinect et redémarrez l\'application' if not running else ''}
+                        {'Error' if not running else ''}
                     </div>
                 </div>
             </div>
@@ -363,14 +364,14 @@ def render():
         # Current prediction
         pred_placeholder.markdown(f"""
         <div class="panel" style="margin-bottom:18px">
-            <div class="panel-title">PRÉDICTION ACTUELLE</div>
+            <div class="panel-title">Current prediction</div>
             <div class="pred-label">{top_class}</div>
-            <div class="pred-conf">confiance {top_conf:.1%}</div>
+            <div class="pred-conf">confidence level {top_conf:.1%}</div>
         </div>
         """, unsafe_allow_html=True)
 
         # Confidence bar chart
-        conf_placeholder.markdown('<div class="sec-title">Scores de Confiance</div>', unsafe_allow_html=True)
+        conf_placeholder.markdown('<div class="sec-title">Confidence scores</div>', unsafe_allow_html=True)
 
         bars_html = ""
         for i, (label, conf) in enumerate(sorted_conf):

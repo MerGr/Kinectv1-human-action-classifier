@@ -1,5 +1,5 @@
-import os
-os.add_dll_directory(r"C:\libfreenect\lib")
+#import os
+#os.add_dll_directory(r"C:\libfreenect\lib")
 
 import freenect
 import numpy as np

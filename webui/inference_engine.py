@@ -12,8 +12,8 @@ warnings.filterwarnings('ignore', category=UserWarning, module='daal4py')
 # CONFIGURATION
 # ---------------------------------------------------------------------------
 
-MODEL_PATH  = "../models"
-MODEL_NAME  = "rf_best_model"
+MODEL_PATH  = "../pretrained_models"
+MODEL_NAME  = "rf"
 SCALER_NAME = "data_scaler"
 
 CONFIDENCE_THRESHOLD = 0.4
@@ -32,17 +32,17 @@ JOINT_PAIRS = [
 ]
 
 ACTION_LABELS = {
-    1: "Agiter bras horizontalement", 
-    2: "Agiter bras en haut", 
-    3: "Agiter les deux mains",
-    4: "Se pencher", 
-    5: "Applaudir", 
-    6: "Marcher",
-    7: "Appeler", 
-    8: "Boire", 
-    9: "S'asseoir",
-    10: "Se lever", 
-    11: "Debout",
+    1: "Wave Horizontal", 
+    2: "Wave Up", 
+    3: "Wave Both Hands",
+    4: "Bend", 
+    5: "Clap", 
+    6: "Walk",
+    7: "Call", 
+    8: "Drink", 
+    9: "Sit",
+    10: "Stand up", 
+    11: "Standing",
 }
 
 # ---------------------------------------------------------------------------

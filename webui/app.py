@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="KARD — Inférence en Direct",
+    page_title="Kinect realtime action recognition",
     page_icon="⬜",
     layout="wide",
     initial_sidebar_state="collapsed",
