@@ -15,11 +15,15 @@ Yuan, Lin & He, Zhen & Wang, Qiang & Xu, Leiyang & Ma, Xiang. (2023). Improving 
 https://github.com/user-attachments/assets/950df8cb-3363-4ff3-b8ef-95617ff4c280
 
 ## Requirements
-–	Python 3.8+ with pip
-–	Kinect V1 (aka Xbox 360 Kinect) sensor (Note for Windows: must use Zadig LibusbK driver for all 3 Xbox NUI devices)
-–	libfreenectv1 latest commit (0.7.5 as of 2026)
-–	latest OpenNI2 + PrimeSense NiTE2 binaries (2.2.x)
--   Cmake Build Tools for compiling libfreenect and openni-python3 python package
+- Python 3.8+ with pip
+
+- Kinect V1 (aka Xbox 360 Kinect) sensor (Note for Windows: must use Zadig LibusbK driver for all 3 Xbox NUI devices)
+
+- libfreenectv1 latest commit (0.7.5 as of 2026)
+
+- latest OpenNI2 + PrimeSense NiTE2 binaries (2.2.x)
+
+- Cmake Build Tools for compiling libfreenect and openni-python3 python package
 
 ## Setup
 
