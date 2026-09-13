@@ -12,7 +12,7 @@ Liu, Mengyuan & Liu, Hong & Hu, Qianshuo & Ren, Bin & Yuan, Junsong & Lin, Jiayi
 Yuan, Lin & He, Zhen & Wang, Qiang & Xu, Leiyang & Ma, Xiang. (2023). Improving Small-Scale Human Action Recognition Performance Using a 3D Heatmap Volume. Sensors. 23. 10.3390/s23146364.
 
 ## Demo
-[![Demo](https://raw.githubusercontent.com/MerGr/Kinectv1-human-action-classifier/main/assets/demo.mp4)]
+https://github.com/user-attachments/assets/950df8cb-3363-4ff3-b8ef-95617ff4c280
 
 ## Requirements
 –	Python 3.8+ with pip
