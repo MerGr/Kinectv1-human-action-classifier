@@ -1,18 +1,18 @@
 # Depth based human action classifier using Microsoft's Kinect v1, PoC
 
-> **DISCLAIMER:** This is a proof-of-concept and was made for learning purposes, the models can suffer from overfitting, and the scripts/openni-python3 package are not very polished and are prone to bugs.
-
-## Citations:
-*Human Activity Recognition Process Using 3-D Posture Data. S. Gaglio, G. Lo Re, M. Morana. In IEEE Transactions on Human-Machine Systems. 2014 doi: 10.1109/THMS.2014.2377111*
-
-*Liu, Mengyuan & Liu, Hong & Hu, Qianshuo & Ren, Bin & Yuan, Junsong & Lin, Jiaying & Wen, Jiajun. (2025). 3D Skeleton-Based Action Recognition: A Review. 10.48550/arXiv.2506.00915. *
-
-*Yuan, Lin & He, Zhen & Wang, Qiang & Xu, Leiyang & Ma, Xiang. (2023). Improving Small-Scale Human Action Recognition Performance Using a 3D Heatmap Volume. Sensors. 23. 10.3390/s23146364. *
-
 Realtime SVM/RF-based action recognition and classification using a modified and augmented KARD dataset, libfreenect and OpenNI2 backend for device interaction and skeletal tracking respectively
 
+> **DISCLAIMER:** This is a proof-of-concept and was made for learning purposes, the models can suffer from overfitting, and the scripts/openni-python3 package are not very polished and are prone to bugs.
+
+## helpful papers for the making of this project :
+Human Activity Recognition Process Using 3-D Posture Data. S. Gaglio, G. Lo Re, M. Morana. In IEEE Transactions on Human-Machine Systems. 2014 doi: 10.1109/THMS.2014.2377111
+
+Liu, Mengyuan & Liu, Hong & Hu, Qianshuo & Ren, Bin & Yuan, Junsong & Lin, Jiaying & Wen, Jiajun. (2025). 3D Skeleton-Based Action Recognition: A Review. 10.48550/arXiv.2506.00915.
+
+Yuan, Lin & He, Zhen & Wang, Qiang & Xu, Leiyang & Ma, Xiang. (2023). Improving Small-Scale Human Action Recognition Performance Using a 3D Heatmap Volume. Sensors. 23. 10.3390/s23146364.
+
 ## Demo
-[![Demo](https://raw.githubusercontent.com/MerGr/Kinectv1-human-action-classifier/refs/heads/main/assets/demo.mp4)]
+[![Demo](https://raw.githubusercontent.com/MerGr/Kinectv1-human-action-classifier/main/assets/demo.mp4)]
 
 ## Requirements
 –	Python 3.8+ with pip
