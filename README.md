@@ -12,7 +12,7 @@
 Realtime SVM/RF-based action recognition and classification using a modified and augmented KARD dataset, libfreenect and OpenNI2 backend for device interaction and skeletal tracking respectively
 
 ## Demo
-https://raw.githubusercontent.com/MerGr/Kinectv1-human-action-classifier/refs/heads/main/assets/demo.mp4
+[![Demo](https://raw.githubusercontent.com/MerGr/Kinectv1-human-action-classifier/refs/heads/main/assets/demo.mp4)]
 
 ## Requirements
 –	Python 3.8+ with pip
